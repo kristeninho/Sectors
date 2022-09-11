@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using SectorsBackend.Data;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
-using System.Linq;
 
 namespace SectorsBackend.Repositories
 {
@@ -23,14 +22,13 @@ namespace SectorsBackend.Repositories
 			var allSectors = await context.Sectors.ToListAsync();
 
 			var levelZeroSectors = allSectors.Where(a => a.ParentId == null).ToList();
-			var levelZeroSectorsCount = levelZeroSectors.Count();
 
-			var sectorsList = (levelZeroSectors.Select(sector => ConfigureSectorDTO(sector, allSectors, 0))).ToList();
+			var sectorsList = (levelZeroSectors.Select(sector => ConfigureSectorDTORecursively(sector, allSectors, 0))).ToList();
 
 			return sectorsList;
 		}
 
-		private SectorDTO ConfigureSectorDTO(Sector sector, List<Sector> sectors, int level)
+		private SectorDTO ConfigureSectorDTORecursively(Sector sector, List<Sector> sectors, int level)
 		{
 			if (sector.HasSubSectors == false)
 			{
@@ -45,7 +43,7 @@ namespace SectorsBackend.Repositories
 
 			foreach(var s in sectors.Where(x => x.ParentId == sector.Id))
 			{
-				subSectors.Add(ConfigureSectorDTO(s, sectors, level + 1));
+				subSectors.Add(ConfigureSectorDTORecursively(s, sectors, level + 1));
 			}
 
 			return new SectorDTO()

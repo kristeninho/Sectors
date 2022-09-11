@@ -2,7 +2,6 @@
 
 namespace SectorsBackend.DTOs
 {
-
 	public class SectorDTO
 	{
 		public Sector Sector { get; set; }
