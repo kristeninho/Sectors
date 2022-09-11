@@ -1,0 +1,51 @@
+<body>
+    <form class="form" [formGroup]="sectorsForm" (ngSubmit)="onSubmit()">
+        <p>
+            <h2>Please enter your name and pick the Sectors you are currently involved in.</h2>
+            <label class="inputLabel">Name:</label>
+            <input type="text" formControlName="name" id="name" autofocus>
+            <button class="loadButton" type="button" [disabled]="!sectorsForm.get('name')?.valid" (click)="loadDataForUser()">Load data</button>
+            
+        <p>
+        <div class="inputLabel">Sectors:</div> 
+        <select class="select" multiple size="30" formControlName="formSectors" [ngModel]="selectedOptions">
+            <optgroup class="zeroLevelSector" *ngFor="let a of sectors" label="{{a.sector.name}}">
+                <ng-container *ngFor="let b of a.sectors">
+                    <ng-container *ngIf="b.sector.hasSubSectors==false">
+                        <option class="firstLevelSector" [ngValue]="b.sector.id">{{b.sector.name}}</option>
+                    </ng-container>
+                    <ng-container *ngIf="b.sector.hasSubSectors==true">
+                        <option disabled class="firstLevelSector" [ngValue]="b.sector.id">{{b.sector.name}}</option>
+
+                        <ng-container *ngFor="let c of b.sectors">
+                            <ng-container *ngIf="c.sector.hasSubSectors==false">
+                                <option class="secondLevelSector" [ngValue]="c.sector.id">{{c.sector.name}}</option>
+                            </ng-container>
+                            <ng-container *ngIf="c.sector.hasSubSectors==true">
+                                <option disabled class="secondLevelSector" [ngValue]="c.sector.id">{{c.sector.name}}</option>
+
+                                <ng-container *ngFor="let d of c.sectors">
+                                    <ng-container *ngIf="d.sector.hasSubSectors==false">
+                                        <option class="thirdLevelSector" [ngValue]="d.sector.id">{{d.sector.name}}</option>
+                                    </ng-container>
+                                    <ng-container *ngIf="d.sector.hasSubSectors==true">
+                                        <option disabled class="thirdLevelSector"  selected [ngValue]="d.sector.id">{{d.sector.name}}</option>
+                                    </ng-container>
+                                </ng-container>
+                            </ng-container>
+                        </ng-container>
+                        
+                    </ng-container>
+                </ng-container>
+            </optgroup>
+        </select>
+
+        <p>
+        <input type="checkbox" formControlName="agreeToTerms"> Agree to terms
+
+        <p>
+        <div class="saveButtonWrapper">
+            <button class="saveButton" type="submit" [disabled]="!sectorsForm.valid">Save</button>
+        </div>
+    </form>
+</body>
