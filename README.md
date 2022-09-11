@@ -5,7 +5,7 @@ Frontend: AngularTS 14.2.0 <br />
 
 # Setup
 ## SectorsBackend Setup
-- Open the SectorsBackend solution in Visual Studio and run the solution. <br />
+- Open the SectorsBackend solution in Visual Studio and run the project. <br />
 - Database "ConnectionString" can be found in appsettings.json. By default it will create database to your local "mssqllocaldb". <br />
 
 ## SectorsFrontend Setup
