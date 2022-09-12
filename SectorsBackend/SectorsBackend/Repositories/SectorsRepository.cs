@@ -15,7 +15,7 @@ namespace SectorsBackend.Repositories
 			_context = context;
 		}
 
-		public async Task<ActionResult<List<SectorDTO>>> GetSectorsFilteredByCategoryAsync()
+		public virtual async Task<ActionResult<List<SectorDTO>>> GetSectorsFilteredByCategoryAsync()
 		{
 			using var context = _context.CreateDbContext();
 
