@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SectorsBackend.DTOs;
-using SectorsBackend.Repositories;
+using SectorsBackend.Repositories.Interfaces;
 
 namespace SectorsBackend.Controllers
 {
@@ -8,8 +8,8 @@ namespace SectorsBackend.Controllers
     [ApiController]
     public class SectorsController : ControllerBase
     {
-        private readonly SectorsRepository _sectorRepository;
-        public SectorsController(SectorsRepository sectorRepository)
+        private readonly ISectorsRepository _sectorRepository;
+        public SectorsController(ISectorsRepository sectorRepository)
         {
             _sectorRepository = sectorRepository;
         }

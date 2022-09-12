@@ -2,6 +2,7 @@
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
 using SectorsBackend.Repositories;
+using SectorsBackend.Repositories.Interfaces;
 
 namespace SectorsBackend.Controllers
 {
@@ -9,8 +10,8 @@ namespace SectorsBackend.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UsersRepository _usersRepository;
-        public UsersController(UsersRepository usersRepository)
+        private readonly IUsersRepository _usersRepository;
+        public UsersController(IUsersRepository usersRepository)
         {
             _usersRepository = usersRepository;
         }
