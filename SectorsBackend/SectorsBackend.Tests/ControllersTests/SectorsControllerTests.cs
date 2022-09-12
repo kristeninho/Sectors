@@ -50,9 +50,10 @@ namespace SectorsBackend.UnitTests.ControllersTests
 
             //act
             var sectorResult = sectorsController.GetAllSectorsSeperatedByCategories().Result;
-            var notFoundSectorResult = sectorResult.Result as NotFoundObjectResult;
 
             //assert
+            var notFoundSectorResult = sectorResult.Result as NotFoundObjectResult;
+
             Assert.Null(sectorResult.Value);
             Assert.Equal(StatusCodes.Status404NotFound, notFoundSectorResult.StatusCode);
             Assert.Equal("Sectors not found", notFoundSectorResult.Value);
