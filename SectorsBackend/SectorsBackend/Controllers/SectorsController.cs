@@ -20,7 +20,7 @@ namespace SectorsBackend.Controllers
         {
             var sectors = await _sectorRepository.GetSectorsFilteredByCategoryAsync();
 
-            if (sectors == null)
+            if (sectors == null || sectors.Value.Count() == 0)
             {
                 return NotFound("Sectors not found");
             }
