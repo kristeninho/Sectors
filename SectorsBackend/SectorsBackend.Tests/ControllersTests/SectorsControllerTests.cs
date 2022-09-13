@@ -17,18 +17,18 @@ namespace SectorsBackend.UnitTests.ControllersTests
         }
 
         [Fact]
-        public void GetAllSectorsSeperatedByCategoriesTest_WithSectorsData()
+        public void GetAllSectorsSeparatedByCategoriesTest_WithSectorsData()
         {
             //arrange
             var sectorsList = GetSectorDTOsTestData();
 
-            sectorsRepository.Setup(x => x.GetSectorsFilteredByCategoryAsync())
+            sectorsRepository.Setup(x => x.GetSectorsSeparatedByCategoryAsync())
                 .ReturnsAsync(sectorsList);
 
             var sectorsController = new SectorsController(sectorsRepository.Object);
 
             //act
-            var sectorResult = sectorsController.GetAllSectorsSeperatedByCategories().Result.Value;
+            var sectorResult = sectorsController.GetAllSectorsSeparatedByCategories().Result.Value;
 
             //assert
             Assert.NotNull(sectorResult);
@@ -37,18 +37,18 @@ namespace SectorsBackend.UnitTests.ControllersTests
         }
 
         [Fact]
-        public void GetAllSectorsSeperatedByCategoriesTest_WithoutSectorsData()
+        public void GetAllSectorsSeparatedByCategoriesTest_WithoutSectorsData()
         {
             //arrange
             var sectorsList = new List<SectorDTO>();
 
-            sectorsRepository.Setup(x => x.GetSectorsFilteredByCategoryAsync())
+            sectorsRepository.Setup(x => x.GetSectorsSeparatedByCategoryAsync())
                 .ReturnsAsync(sectorsList);
 
             var sectorsController = new SectorsController(sectorsRepository.Object);
 
             //act
-            var sectorResult = sectorsController.GetAllSectorsSeperatedByCategories().Result;
+            var sectorResult = sectorsController.GetAllSectorsSeparatedByCategories().Result;
 
             //assert
             var notFoundSectorResult = sectorResult.Result as NotFoundObjectResult;

@@ -14,11 +14,11 @@ namespace SectorsBackend.Controllers
             _sectorRepository = sectorRepository;
         }
 
-        // GET: api/GetAllSectorsSeperatedByCategories
-        [HttpGet("GetAllSectorsSeperatedByCategories")]
-        public async Task<ActionResult<List<SectorDTO>>> GetAllSectorsSeperatedByCategories()
+        // GET: api/GetAllSectorsSeparatedByCategories
+        [HttpGet("GetAllSectorsSeparatedByCategories")]
+        public async Task<ActionResult<List<SectorDTO>>> GetAllSectorsSeparatedByCategories()
         {
-            var sectors = await _sectorRepository.GetSectorsFilteredByCategoryAsync();
+            var sectors = await _sectorRepository.GetSectorsSeparatedByCategoryAsync();
 
             if (sectors == null || sectors.Value.Count() == 0)
             {

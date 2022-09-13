@@ -33,7 +33,7 @@ namespace SectorsBackend.UnitTests.RepositoriesTests
 
 			//act
 			var sectorDTOsExpected = GetSectorDTOsTestData();
-			var sectorDTOsActual = _repository.GetSectorsFilteredByCategoryAsync().Result.Value;
+			var sectorDTOsActual = _repository.GetSectorsSeparatedByCategoryAsync().Result.Value;
 			var expectedJson = System.Text.Json.JsonSerializer.Serialize(sectorDTOsExpected);
 			var actualJson = System.Text.Json.JsonSerializer.Serialize(sectorDTOsActual);
 

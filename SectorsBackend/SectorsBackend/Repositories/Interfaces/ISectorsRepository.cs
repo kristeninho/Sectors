@@ -5,6 +5,6 @@ namespace SectorsBackend.Repositories.Interfaces
 {
 	public interface ISectorsRepository
 	{
-		Task<ActionResult<List<SectorDTO>>> GetSectorsFilteredByCategoryAsync();
+		Task<ActionResult<List<SectorDTO>>> GetSectorsSeparatedByCategoryAsync();
 	}
 }
