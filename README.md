@@ -1,6 +1,6 @@
 # Sectors
 Backend: C#, .NET 6.0, ASP.NET Core <br />
-Testing: Xunit, Moq, EF Core InMemoryDatabase
+Testing: Xunit, Moq, EF Core InMemoryDatabase <br />
 Database: MSSQL <br />
 Frontend: AngularTS 14.2.0 <br />
 
