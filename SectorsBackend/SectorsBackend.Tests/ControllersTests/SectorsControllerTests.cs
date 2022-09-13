@@ -5,7 +5,6 @@ using SectorsBackend.Controllers;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
 using SectorsBackend.Repositories.Interfaces;
-using System.Net;
 
 namespace SectorsBackend.UnitTests.ControllersTests
 {
@@ -61,7 +60,7 @@ namespace SectorsBackend.UnitTests.ControllersTests
 
         private List<SectorDTO> GetSectorDTOsTestData()
         {
-            var sectorDTOList = new List<SectorDTO>()
+            var sectorDTOsList = new List<SectorDTO>()
             {
               new SectorDTO
               {
@@ -155,7 +154,7 @@ namespace SectorsBackend.UnitTests.ControllersTests
                   Sectors = null
               },
             };
-            return sectorDTOList;
+            return sectorDTOsList;
         }
 
     }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
-using SectorsBackend.Repositories;
 using SectorsBackend.Repositories.Interfaces;
 
 namespace SectorsBackend.Controllers

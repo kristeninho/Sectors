@@ -4,11 +4,6 @@ using Moq;
 using SectorsBackend.Controllers;
 using SectorsBackend.DTOs;
 using SectorsBackend.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SectorsBackend.UnitTests.ControllersTests
 {
@@ -116,7 +111,7 @@ namespace SectorsBackend.UnitTests.ControllersTests
 
         private static List<UserDTO> GetUserDTOsTestData()
 		{
-            var userDTOList = new List<UserDTO>()
+            var userDTOsList = new List<UserDTO>()
             {
                 new UserDTO()
                 {
@@ -163,7 +158,7 @@ namespace SectorsBackend.UnitTests.ControllersTests
                      SectorIds = new List<int>{ 23, 53 }
                 }
             };
-            return userDTOList;
+            return userDTOsList;
 		}
     }
 }
