@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using SectorsBackend.Data;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
+using SectorsBackend.Repositories.Interfaces;
 
 namespace SectorsBackend.Repositories
 {
-	public class UsersRepository
+	public class UsersRepository : IUsersRepository
 	{
 		private readonly IDbContextFactory<AppDbContext> _context;
 
@@ -89,7 +90,7 @@ namespace SectorsBackend.Repositories
 			return await context.Users.Include("Sectors").FirstAsync(u => u.Name.ToUpper() == userName.ToUpper());
 		}
 
-		private KeyValuePair<bool, string> AreUserSectorsValid(AppDbContext context, UserDTO user)
+		private static KeyValuePair<bool, string> AreUserSectorsValid(AppDbContext context, UserDTO user)
 		{
 			var sectorsList = context.Sectors.ToList();
 
@@ -105,7 +106,7 @@ namespace SectorsBackend.Repositories
 			return new KeyValuePair<bool, string>(true, "");
 		}
 
-		private async Task<bool> UserExists(string userName, AppDbContext context)
+		private static async Task<bool> UserExists(string userName, AppDbContext context)
 		{
 			return await context.Users.AnyAsync(u => u.Name.ToUpper() == userName.ToUpper());
 		}

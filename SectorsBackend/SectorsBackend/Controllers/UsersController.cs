@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
-using SectorsBackend.Repositories;
+using SectorsBackend.Repositories.Interfaces;
+using SectorsBackend.Utils;
 
 namespace SectorsBackend.Controllers
 {
@@ -9,8 +10,8 @@ namespace SectorsBackend.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UsersRepository _usersRepository;
-        public UsersController(UsersRepository usersRepository)
+        private readonly IUsersRepository _usersRepository;
+        public UsersController(IUsersRepository usersRepository)
         {
             _usersRepository = usersRepository;
         }
@@ -19,6 +20,9 @@ namespace SectorsBackend.Controllers
         [HttpGet("GetUserdata")]
         public async Task<ActionResult<UserDTO>> GetUserData(string userName)
         {
+            var isUserNameValid = UserValidationHelper.IsUserNameValid(userName);
+            if (!isUserNameValid.Key) return BadRequest(isUserNameValid.Value);
+
             var userData = await _usersRepository.GetUserDataByNameAsync(userName);
 
             if (userData == null)
@@ -29,46 +33,21 @@ namespace SectorsBackend.Controllers
             return userData;
         }
 
-        // POST: api/AddOrUpdateUser
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("AddOrUpdateUser")]
+		// POST: api/AddOrUpdateUser
+		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+		[HttpPost("AddOrUpdateUser")]
         public async Task<ActionResult<User>> AddOrUpdateUser(UserDTO user)
 		{
-            var isUserValid = IsUserValid(user);
+            var isUserValid = UserValidationHelper.IsUserValid(user);
 
             if (isUserValid.Key)
 			{
 				var response = await _usersRepository.AddOrUpdateUserAsync(user);
 
 				if (response == "User created" || response == "User updated") return StatusCode(201, response);
-				return Problem(response);
+				return BadRequest(response);
 			}
-			return Problem(isUserValid.Value);
+			return BadRequest(isUserValid.Value);
 		}
-
-		private static KeyValuePair<bool, string> IsUserValid(UserDTO user)
-		{
-			if (user == null)
-            {
-                return new KeyValuePair<bool, string>(false, "User is null");
-			}
-            if (user.SectorIds == null)
-            {
-                return new KeyValuePair<bool, string>(false, "User has no sectors");
-            }
-            if (user.Name == null)
-			{
-                return new KeyValuePair<bool, string>(false, "User has no name");
-            }
-            if (user.Name.Length < 3 || user.Name.Length > 30)
-			{
-                return new KeyValuePair<bool, string>(false, "User Name length is not between 3 - 30 characters");
-            }
-			if (!user.AgreedToTerms)
-			{
-                return new KeyValuePair<bool, string>(false, "User has not agreed to terms");
-            }
-            return new KeyValuePair<bool, string>(true, "");
-        }
-	}
+    }
 }

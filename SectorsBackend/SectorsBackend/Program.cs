@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SectorsBackend.Data;
 using SectorsBackend.Repositories;
+using SectorsBackend.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddPooledDbContextFactory<AppDbContext>(options 
 	=> options.UseSqlServer(builder.Configuration.GetConnectionString("AppDbContext")));
 builder.Services.AddScoped<AppDbContext>();
-builder.Services.AddSingleton<SectorsRepository>();
-builder.Services.AddSingleton<UsersRepository>();
+builder.Services.AddSingleton<ISectorsRepository, SectorsRepository>();
+builder.Services.AddSingleton<IUsersRepository, UsersRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
