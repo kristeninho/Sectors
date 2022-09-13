@@ -1,12 +1,13 @@
 # Sectors
 Backend: C#, .NET 6.0, ASP.NET Core <br />
+Testing: Xunit, Moq, EF Core InMemoryDatabase
 Database: MSSQL <br />
 Frontend: AngularTS 14.2.0 <br />
 
 # Setup
 ## SectorsBackend Setup
 - Open the SectorsBackend solution in Visual Studio and run the project. <br />
-- Database "ConnectionString" can be found in appsettings.json. By default it will create database to your local "mssqllocaldb". <br />
+- Database "ConnectionString" can be found in appsettings.json. By default it will create database to your local "mssqllocaldb" with name "SectorsDB". <br />
 
 ## SectorsFrontend Setup
 If you do not have node.js and Angular installed locally: <br />
@@ -17,7 +18,7 @@ If you do not have node.js and Angular installed locally: <br />
 - Open terminal within the folder and type "npm install". <br />
 - Confirm that the proxy.conf.json "target" URL is the same as your SectorsBackend URL. If not, then edit it to be the same. <br />
 - Make sure that backend is running!
-- Run the project writing "npm start" in the terminal. <br />
+- Run the project writing "npm start" in the terminal. (It is important to use this command, because it is configured to use proxy) <br />
 - If your Angular does not listen to http://localhost:4200/, then edit the baseUrl in src/app/services/sector.service to be the same URL Angular is listening to. <br />
 - Open http://localhost:4200/ from browser and done <br />
 
