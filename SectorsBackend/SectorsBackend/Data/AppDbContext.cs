@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SectorsBackend.Models;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
 namespace SectorsBackend.Data
 {

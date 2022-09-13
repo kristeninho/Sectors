@@ -3,8 +3,6 @@ using SectorsBackend.Data;
 using SectorsBackend.DTOs;
 using SectorsBackend.Models;
 using SectorsBackend.Repositories;
-using SectorsBackend.Repositories.Interfaces;
-using SectorsBackend.UnitTests.RepositoriesTests;
 
 namespace SectorsBackend.UnitTests.RepositoriesTests
 {
