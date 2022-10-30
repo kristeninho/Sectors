@@ -14,7 +14,7 @@ export class SectorService {
 
   initializedSectors: ISector[] = [];
 
-  private baseUrl: string = "http://localhost:4200/api/";
+  private baseUrl: string = "http://localhost:8080/api/";
   private dataInitialisationEndpoint: string = "Sectors/GetAllSectorsSeparatedByCategories";
   private addOrUpdateUserEndpoint: string = "Users/AddOrUpdateUser";
   private getUserDataEndpoint: string = "Users/GetUserData";

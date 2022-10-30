@@ -31,3 +31,12 @@ Database will be automatically created running SectorsBackend solution, but if y
 1) Download and open Microsoft SQL Server Management Studio <br />
 2) Connect to MSSQLLocalDB and right-click on Databases folder. Choose "Import Data-tier Application" <br />
 3) Add SectorsDB.bacpac file from there and you are set <br />
+
+
+
+# Docker
+
+## Setup
+- Make sure you have docker installed to your machine <br />
+- Run "docker compose up" on the root root folder where docker-compose.yml is <br />
+- Open http://localhost:4200/ from browser and done <br />

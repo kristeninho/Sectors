@@ -1,0 +1,31 @@
+version: '1.0'
+services:
+  sectors_db:
+    container_name: sectors_db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment: 
+      - SA_PASSWORD=Password!
+      - ACCEPT_EULA=Y
+    ports:
+      - 2433:1433
+    volumes:
+      - db_data:/var/opt/mssql
+
+  sectors_backend:
+    container_name: sectors_backend
+    depends_on: 
+      - sectors_db
+    build: ./SectorsBackend
+    ports:
+      - 8080:80
+  
+  sectors_frontend:
+    container_name: sectors_frontend
+    depends_on:
+      - sectors_backend
+    build: ./SectorsFrontend
+    ports:
+      - 4200:80
+
+volumes:
+  db_data:
