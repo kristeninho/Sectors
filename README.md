@@ -4,7 +4,13 @@ Testing: Xunit, Moq, EF Core InMemoryDatabase <br />
 Database: MSSQL <br />
 Frontend: AngularTS 14.2.0 <br />
 
-# Setup (without Docker)
+# Setup with Docker
+- Clone the repository <br />
+- Make sure you have docker installed to your machine <br />
+- Run "docker compose up" on the root root folder where docker-compose.yml is <br />
+- Open http://localhost:4200/ from browser and done <br />
+
+# Setup without Docker
 ## SectorsBackend Setup
 - Open the SectorsBackend solution in Visual Studio and run the project. <br />
 - Database "ConnectionString" can be found in appsettings.json. By default it will create database to your local "mssqllocaldb" with name "SectorsDB". <br />
@@ -31,11 +37,3 @@ Database will be automatically created running SectorsBackend solution, but if y
 1) Download and open Microsoft SQL Server Management Studio <br />
 2) Connect to MSSQLLocalDB and right-click on Databases folder. Choose "Import Data-tier Application" <br />
 3) Add SectorsDB.bacpac file from there and you are set <br />
-
-
-
-# Docker Setup
-
-- Make sure you have docker installed to your machine <br />
-- Run "docker compose up" on the root root folder where docker-compose.yml is <br />
-- Open http://localhost:4200/ from browser and done <br />
