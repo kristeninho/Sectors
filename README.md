@@ -13,7 +13,9 @@ Frontend: AngularTS 14.2.0 <br />
 # Setup without Docker
 ## SectorsBackend Setup
 - Open the SectorsBackend solution in Visual Studio and run the project. <br />
-- Database "ConnectionString" can be found in appsettings.json. By default it will create database to your local "mssqllocaldb" with name "SectorsDB". <br />
+- Database "ConnectionString" can be found in appsettings.json. Set the Connction string value as: 
+"Server=(localdb)\\mssqllocaldb;Database=SectorsDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+It will create database to your local "mssqllocaldb" with name "SectorsDB". <br />
 
 ## SectorsFrontend Setup
 If you do not have node.js and Angular installed locally: <br />
@@ -22,6 +24,7 @@ If you do not have node.js and Angular installed locally: <br />
 
 - When nodeJS and Angular have been installed, then open the SectorsFrontend folder in Visual Studio Code. <br />
 - Open terminal within the folder and type "npm install". <br />
+- Open src/app/services/sector.service.ts and set the baseUrl value to "http://localhost:4200/api/". <br />
 - Confirm that the proxy.conf.json "target" URL is the same as your SectorsBackend URL. If not, then edit it to be the same. <br />
 - Make sure that backend is running!
 - Run the project writing "npm start" in the terminal. (It is important to use this command, because it is configured to use proxy) <br />
